@@ -1,19 +1,41 @@
-import client from "@/lib/backend/client";
 import { cookies } from "next/headers";
 import ClientPage from "./ClientPage";
 
 export default async function page() {
-  const response = await client.GET("/api/v1/members/me", {
-    headers: {
-      cookie: (await cookies()).toString(),
-    },
-  });
+  const cookieStore = await cookies();
+  const accessToken = cookieStore.get("accessToken")?.value;
 
-  if (response.error) {
-    return response.error.msg;
-  }
+  const { accessTokenPayload } = parseAccessToken(accessToken);
 
-  const me = response.data;
+  const me = {
+    id: accessTokenPayload.id,
+    createDate: "",
+    modifyDate: "",
+    nickname: accessTokenPayload.nickname,
+  };
 
   return <ClientPage me={me} />;
+}
+
+function parseAccessToken(accessToken: string | undefined) {
+  let isAccessTokenExpired = true;
+  let accessTokenPayload = null;
+
+  if (accessToken) {
+    try {
+      const tokenParts = accessToken.split(".");
+      accessTokenPayload = JSON.parse(
+        Buffer.from(tokenParts[1], "base64").toString()
+      );
+      const expTimestamp = accessTokenPayload.exp * 1000;
+      isAccessTokenExpired = Date.now() > expTimestamp;
+    } catch (e) {
+      console.error("토큰 파싱 중 오류 발생:", e);
+    }
+  }
+
+  const isLogin =
+    accessTokenPayload === "object" && accessTokenPayload !== null;
+
+  return { isLogin, isAccessTokenExpired, accessTokenPayload };
 }
