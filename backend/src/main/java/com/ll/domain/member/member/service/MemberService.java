@@ -7,6 +7,9 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -68,5 +71,11 @@ public class MemberService {
         String nickname = (String) payload.get("nickname");
 
         return new Member(id, username, nickname);
+    }
+
+    public Page<Member> findByPaged(int page, int pageSize) {
+        PageRequest pageRequest = PageRequest.of(page - 1, pageSize, Sort.by(Sort.Order.desc("id")));
+
+        return memberRepository.findAll(pageRequest);
     }
 }

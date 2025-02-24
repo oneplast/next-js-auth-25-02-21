@@ -5,6 +5,7 @@ import com.ll.domain.member.member.entity.Member;
 import com.ll.domain.member.member.service.AuthTokenService;
 import com.ll.domain.member.member.service.MemberService;
 import com.ll.global.dto.Empty;
+import com.ll.global.dto.PageDto;
 import com.ll.global.exceptions.ServiceException;
 import com.ll.global.rq.Rq;
 import com.ll.global.rsData.RsData;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -111,5 +113,18 @@ public class ApiV1MemberController {
         Member actor = rq.getActor();
 
         return new MemberDto(actor);
+    }
+
+    @GetMapping
+    @Transactional(readOnly = true)
+    @Operation(summary = "회원 다건 조회")
+    public PageDto<MemberDto> items(
+            @RequestParam(defaultValue = "1") int page,
+            @RequestParam(defaultValue = "10") int pageSize
+    ) {
+        return new PageDto<>(
+                memberService.findByPaged(page, pageSize)
+                        .map(MemberDto::new)
+        );
     }
 }
