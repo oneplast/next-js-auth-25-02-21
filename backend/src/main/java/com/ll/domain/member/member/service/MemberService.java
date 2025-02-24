@@ -3,6 +3,8 @@ package com.ll.domain.member.member.service;
 import com.ll.domain.member.member.entity.Member;
 import com.ll.domain.member.member.repository.MemberRepository;
 import com.ll.global.exceptions.ServiceException;
+import com.ll.global.search.MemberSearchKeywordTypeV1;
+import com.ll.util.Ut;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
@@ -71,6 +73,22 @@ public class MemberService {
         String nickname = (String) payload.get("nickname");
 
         return new Member(id, username, nickname);
+    }
+
+    public Page<Member> findByPaged(MemberSearchKeywordTypeV1 searchKeywordType, String searchKeyword, int page,
+                                    int pageSize) {
+        if (Ut.str.isBlank(searchKeyword)) {
+            return findByPaged(page, pageSize);
+        }
+
+        PageRequest pageRequest = PageRequest.of(page - 1, pageSize, Sort.by(Sort.Order.desc("id")));
+
+        searchKeyword = "%" + searchKeyword + "%";
+
+        return switch (searchKeywordType) {
+            case MemberSearchKeywordTypeV1.username -> memberRepository.findByUsernameLike(searchKeyword, pageRequest);
+            default -> memberRepository.findByNicknameLike(searchKeyword, pageRequest);
+        };
     }
 
     public Page<Member> findByPaged(int page, int pageSize) {

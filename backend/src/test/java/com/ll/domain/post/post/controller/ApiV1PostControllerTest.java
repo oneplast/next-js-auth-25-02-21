@@ -14,7 +14,7 @@ import com.ll.domain.member.member.entity.Member;
 import com.ll.domain.member.member.service.MemberService;
 import com.ll.domain.post.post.entity.Post;
 import com.ll.domain.post.post.service.PostService;
-import com.ll.global.search.SearchKeywordTypeV1;
+import com.ll.global.search.PostSearchKeywordTypeV1;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -519,7 +519,7 @@ public class ApiV1PostControllerTest {
                 )
                 .andDo(print());
 
-        Page<Post> postPage = postService.findByListedPaged(true, SearchKeywordTypeV1.title, "축구", 1, 3);
+        Page<Post> postPage = postService.findByListedPaged(true, PostSearchKeywordTypeV1.title, "축구", 1, 3);
 
         resultActions
                 .andExpect(handler().handlerType(ApiV1PostController.class))
@@ -558,7 +558,7 @@ public class ApiV1PostControllerTest {
                 )
                 .andDo(print());
 
-        Page<Post> postPage = postService.findByListedPaged(true, SearchKeywordTypeV1.content, "18명", 1, 3);
+        Page<Post> postPage = postService.findByListedPaged(true, PostSearchKeywordTypeV1.content, "18명", 1, 3);
 
         resultActions
                 .andExpect(handler().handlerType(ApiV1PostController.class))
@@ -646,7 +646,7 @@ public class ApiV1PostControllerTest {
                 .andDo(print());
 
         Page<Post> postPage = postService
-                .findByAuthorPaged(actor, SearchKeywordTypeV1.title, "발야구", 1, 3);
+                .findByAuthorPaged(actor, PostSearchKeywordTypeV1.title, "발야구", 1, 3);
 
         resultActions
                 .andExpect(handler().handlerType(ApiV1PostController.class))
@@ -690,7 +690,7 @@ public class ApiV1PostControllerTest {
                 .andDo(print());
 
         Page<Post> postPage = postService
-                .findByAuthorPaged(actor, SearchKeywordTypeV1.content, "18명", 1, 3);
+                .findByAuthorPaged(actor, PostSearchKeywordTypeV1.content, "18명", 1, 3);
 
         resultActions
                 .andExpect(handler().handlerType(ApiV1PostController.class))

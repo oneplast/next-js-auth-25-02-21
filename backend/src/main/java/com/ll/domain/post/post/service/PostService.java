@@ -3,7 +3,7 @@ package com.ll.domain.post.post.service;
 import com.ll.domain.member.member.entity.Member;
 import com.ll.domain.post.post.entity.Post;
 import com.ll.domain.post.post.repository.PostRepository;
-import com.ll.global.search.SearchKeywordTypeV1;
+import com.ll.global.search.PostSearchKeywordTypeV1;
 import com.ll.util.Ut;
 import java.util.List;
 import java.util.Optional;
@@ -69,7 +69,7 @@ public class PostService {
 
     public Page<Post> findByListedPaged(
             boolean listed,
-            SearchKeywordTypeV1 searchKeywordType,
+            PostSearchKeywordTypeV1 searchKeywordType,
             String searchKeyword,
             int page,
             int pageSize
@@ -83,7 +83,7 @@ public class PostService {
         searchKeyword = "%" + searchKeyword + "%";
 
         return switch (searchKeywordType) {
-            case SearchKeywordTypeV1.content -> postRepository.findByListedAndContentLike(listed, searchKeyword, pageRequest);
+            case PostSearchKeywordTypeV1.content -> postRepository.findByListedAndContentLike(listed, searchKeyword, pageRequest);
             default -> postRepository.findByListedAndTitleLike(listed, searchKeyword, pageRequest);
         };
     }
@@ -96,7 +96,7 @@ public class PostService {
 
     public Page<Post> findByAuthorPaged(
             Member author,
-            SearchKeywordTypeV1 searchKeywordType,
+            PostSearchKeywordTypeV1 searchKeywordType,
             String searchKeyword,
             int page,
             int pageSize
@@ -110,7 +110,7 @@ public class PostService {
         searchKeyword = "%" + searchKeyword + "%";
 
         return switch (searchKeywordType) {
-            case SearchKeywordTypeV1.content -> postRepository.findByAuthorAndContentLike(author, searchKeyword, pageRequest);
+            case PostSearchKeywordTypeV1.content -> postRepository.findByAuthorAndContentLike(author, searchKeyword, pageRequest);
             default -> postRepository.findByAuthorAndTitleLike(author, searchKeyword, pageRequest);
         };
     }

@@ -9,6 +9,7 @@ import com.ll.global.dto.PageDto;
 import com.ll.global.exceptions.ServiceException;
 import com.ll.global.rq.Rq;
 import com.ll.global.rsData.RsData;
+import com.ll.global.search.MemberSearchKeywordTypeV1;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -119,11 +120,13 @@ public class ApiV1MemberController {
     @Transactional(readOnly = true)
     @Operation(summary = "회원 다건 조회")
     public PageDto<MemberDto> items(
+            @RequestParam(defaultValue = "username") MemberSearchKeywordTypeV1 searchKeywordType,
+            @RequestParam(defaultValue = "") String searchKeyword,
             @RequestParam(defaultValue = "1") int page,
             @RequestParam(defaultValue = "10") int pageSize
     ) {
         return new PageDto<>(
-                memberService.findByPaged(page, pageSize)
+                memberService.findByPaged(searchKeywordType, searchKeyword, page, pageSize)
                         .map(MemberDto::new)
         );
     }
