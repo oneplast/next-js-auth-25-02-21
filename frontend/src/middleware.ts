@@ -3,6 +3,7 @@ import { cookies } from "next/headers";
 import client from "./lib/backend/client";
 import { ResponseCookie } from "next/dist/compiled/@edge-runtime/cookies";
 import { ReadonlyRequestCookies } from "next/dist/server/web/spec-extension/adapters/request-cookies";
+import { parseAccessToken } from "./lib/auth/token";
 
 export async function middleware(req: NextRequest) {
   const cookieStore = await cookies();
@@ -23,29 +24,6 @@ export async function middleware(req: NextRequest) {
       cookie: cookieStore.toString(),
     },
   });
-}
-
-function parseAccessToken(accessToken: string | undefined) {
-  let isAccessTokenExpired = true;
-  let accessTokenPayload = null;
-
-  if (accessToken) {
-    try {
-      const tokenParts = accessToken.split(".");
-      accessTokenPayload = JSON.parse(
-        Buffer.from(tokenParts[1], "base64").toString()
-      );
-      const expTimestamp = accessTokenPayload.exp * 1000;
-      isAccessTokenExpired = Date.now() > expTimestamp;
-    } catch (e) {
-      console.error("토큰 파싱 중 오류 발생:", e);
-    }
-  }
-
-  const isLogin =
-    typeof accessTokenPayload === "object" && accessTokenPayload != null;
-
-  return { isLogin, isAccessTokenExpired, accessTokenPayload };
 }
 
 async function refreshTokens(cookieStore: ReadonlyRequestCookies) {
