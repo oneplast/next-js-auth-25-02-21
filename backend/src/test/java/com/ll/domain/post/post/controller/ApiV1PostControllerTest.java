@@ -1,4 +1,4 @@
-package com.ll.nextjs20250110.domain.post.post.controller;
+package com.ll.domain.post.post.controller;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
@@ -10,11 +10,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.ll.nextjs20250110.domain.member.member.entity.Member;
-import com.ll.nextjs20250110.domain.member.member.service.MemberService;
-import com.ll.nextjs20250110.domain.post.post.entity.Post;
-import com.ll.nextjs20250110.domain.post.post.service.PostService;
-import com.ll.nextjs20250110.global.search.SearchKeywordTypeV1;
+import com.ll.domain.member.member.entity.Member;
+import com.ll.domain.member.member.service.MemberService;
+import com.ll.domain.post.post.entity.Post;
+import com.ll.domain.post.post.service.PostService;
+import com.ll.global.search.SearchKeywordTypeV1;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.util.List;

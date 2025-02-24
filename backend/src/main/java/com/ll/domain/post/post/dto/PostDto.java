@@ -1,6 +1,6 @@
-package com.ll.nextjs20250110.domain.post.post.dto;
+package com.ll.domain.post.post.dto;
 
-import com.ll.nextjs20250110.domain.post.post.entity.Post;
+import com.ll.domain.post.post.entity.Post;
 import java.time.LocalDateTime;
 import lombok.Getter;
 import org.springframework.lang.NonNull;

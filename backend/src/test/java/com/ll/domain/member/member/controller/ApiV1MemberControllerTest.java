@@ -1,4 +1,4 @@
-package com.ll.nextjs20250110.domain.member.member.controller;
+package com.ll.domain.member.member.controller;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
@@ -9,8 +9,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.ll.nextjs20250110.domain.member.member.entity.Member;
-import com.ll.nextjs20250110.domain.member.member.service.MemberService;
+import com.ll.domain.member.member.entity.Member;
+import com.ll.domain.member.member.service.MemberService;
 import jakarta.servlet.http.Cookie;
 import java.nio.charset.StandardCharsets;
 import org.hamcrest.Matchers;

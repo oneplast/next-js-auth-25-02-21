@@ -1,6 +1,6 @@
-package com.ll.nextjs20250110.global.aspect;
+package com.ll.global.aspect;
 
-import com.ll.nextjs20250110.global.rsData.RsData;
+import com.ll.global.rsData.RsData;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.aspectj.lang.ProceedingJoinPoint;

@@ -1,13 +1,13 @@
-package com.ll.nextjs20250110.domain.member.member.controller;
+package com.ll.domain.member.member.controller;
 
-import com.ll.nextjs20250110.domain.member.member.dto.MemberDto;
-import com.ll.nextjs20250110.domain.member.member.entity.Member;
-import com.ll.nextjs20250110.domain.member.member.service.AuthTokenService;
-import com.ll.nextjs20250110.domain.member.member.service.MemberService;
-import com.ll.nextjs20250110.global.dto.Empty;
-import com.ll.nextjs20250110.global.exceptions.ServiceException;
-import com.ll.nextjs20250110.global.rq.Rq;
-import com.ll.nextjs20250110.global.rsData.RsData;
+import com.ll.domain.member.member.dto.MemberDto;
+import com.ll.domain.member.member.entity.Member;
+import com.ll.domain.member.member.service.AuthTokenService;
+import com.ll.domain.member.member.service.MemberService;
+import com.ll.global.dto.Empty;
+import com.ll.global.exceptions.ServiceException;
+import com.ll.global.rq.Rq;
+import com.ll.global.rsData.RsData;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;

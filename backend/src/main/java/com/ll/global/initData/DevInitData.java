@@ -1,8 +1,8 @@
-package com.ll.nextjs20250110.global.initData;
+package com.ll.global.initData;
 
-import com.ll.nextjs20250110.domain.member.member.service.MemberService;
-import com.ll.nextjs20250110.domain.post.post.service.PostService;
-import com.ll.nextjs20250110.util.Ut;
+import com.ll.domain.member.member.service.MemberService;
+import com.ll.domain.post.post.service.PostService;
+import com.ll.util.Ut;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationRunner;

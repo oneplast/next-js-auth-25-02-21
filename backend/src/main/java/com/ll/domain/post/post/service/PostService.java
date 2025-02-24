@@ -1,10 +1,10 @@
-package com.ll.nextjs20250110.domain.post.post.service;
+package com.ll.domain.post.post.service;
 
-import com.ll.nextjs20250110.domain.member.member.entity.Member;
-import com.ll.nextjs20250110.domain.post.post.entity.Post;
-import com.ll.nextjs20250110.domain.post.post.repository.PostRepository;
-import com.ll.nextjs20250110.global.search.SearchKeywordTypeV1;
-import com.ll.nextjs20250110.util.Ut;
+import com.ll.domain.member.member.entity.Member;
+import com.ll.domain.post.post.entity.Post;
+import com.ll.domain.post.post.repository.PostRepository;
+import com.ll.global.search.SearchKeywordTypeV1;
+import com.ll.util.Ut;
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;

@@ -1,8 +1,8 @@
-package com.ll.nextjs20250110.domain.member.member.service;
+package com.ll.domain.member.member.service;
 
-import com.ll.nextjs20250110.domain.member.member.entity.Member;
-import com.ll.nextjs20250110.domain.member.member.repository.MemberRepository;
-import com.ll.nextjs20250110.global.exceptions.ServiceException;
+import com.ll.domain.member.member.entity.Member;
+import com.ll.domain.member.member.repository.MemberRepository;
+import com.ll.global.exceptions.ServiceException;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
@@ -65,7 +65,8 @@ public class MemberService {
 
         long id = (long) payload.get("id");
         String username = (String) payload.get("username");
+        String nickname = (String) payload.get("nickname");
 
-        return new Member(id, username);
+        return new Member(id, username, nickname);
     }
 }

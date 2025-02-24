@@ -1,11 +1,11 @@
-package com.ll.nextjs20250110.domain.post.post.entity;
+package com.ll.domain.post.post.entity;
 
-import com.ll.nextjs20250110.domain.member.member.entity.Member;
-import com.ll.nextjs20250110.domain.post.comment.entity.PostComment;
-import com.ll.nextjs20250110.global.dto.Empty;
-import com.ll.nextjs20250110.global.exceptions.ServiceException;
-import com.ll.nextjs20250110.global.jpa.entity.BaseTime;
-import com.ll.nextjs20250110.global.rsData.RsData;
+import com.ll.domain.member.member.entity.Member;
+import com.ll.domain.post.comment.entity.PostComment;
+import com.ll.global.dto.Empty;
+import com.ll.global.exceptions.ServiceException;
+import com.ll.global.jpa.entity.BaseTime;
+import com.ll.global.rsData.RsData;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

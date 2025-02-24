@@ -1,8 +1,8 @@
-package com.ll.nextjs20250110.global.security;
+package com.ll.global.security;
 
-import com.ll.nextjs20250110.global.app.AppConfig;
-import com.ll.nextjs20250110.global.rsData.RsData;
-import com.ll.nextjs20250110.util.Ut;
+import com.ll.global.app.AppConfig;
+import com.ll.global.rsData.RsData;
+import com.ll.util.Ut;
 import java.util.Arrays;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;

@@ -1,7 +1,7 @@
-package com.ll.nextjs20250110.domain.post.post.repository;
+package com.ll.domain.post.post.repository;
 
-import com.ll.nextjs20250110.domain.member.member.entity.Member;
-import com.ll.nextjs20250110.domain.post.post.entity.Post;
+import com.ll.domain.member.member.entity.Member;
+import com.ll.domain.post.post.entity.Post;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.data.domain.Page;

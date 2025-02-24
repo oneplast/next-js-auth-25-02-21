@@ -1,7 +1,7 @@
-package com.ll.nextjs20250110.global.security;
+package com.ll.global.security;
 
-import com.ll.nextjs20250110.domain.member.member.entity.Member;
-import com.ll.nextjs20250110.domain.member.member.repository.MemberRepository;
+import com.ll.domain.member.member.entity.Member;
+import com.ll.domain.member.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -23,6 +23,7 @@ public class CustomUserDetailsService implements UserDetailsService {
                 member.getId(),
                 member.getUsername(),
                 member.getPassword(),
+                member.getNickname(),
                 member.getAuthorities()
         );
     }

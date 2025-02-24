@@ -1,4 +1,4 @@
-package com.ll.nextjs20250110.domain.post.comment.controller;
+package com.ll.domain.post.comment.controller;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -9,11 +9,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.ll.nextjs20250110.domain.member.member.entity.Member;
-import com.ll.nextjs20250110.domain.member.member.service.MemberService;
-import com.ll.nextjs20250110.domain.post.comment.entity.PostComment;
-import com.ll.nextjs20250110.domain.post.post.entity.Post;
-import com.ll.nextjs20250110.domain.post.post.service.PostService;
+import com.ll.domain.member.member.entity.Member;
+import com.ll.domain.member.member.service.MemberService;
+import com.ll.domain.post.comment.entity.PostComment;
+import com.ll.domain.post.post.entity.Post;
+import com.ll.domain.post.post.service.PostService;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 import org.hamcrest.Matchers;

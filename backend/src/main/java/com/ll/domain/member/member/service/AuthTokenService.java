@@ -1,7 +1,7 @@
-package com.ll.nextjs20250110.domain.member.member.service;
+package com.ll.domain.member.member.service;
 
-import com.ll.nextjs20250110.domain.member.member.entity.Member;
-import com.ll.nextjs20250110.util.Ut;
+import com.ll.domain.member.member.entity.Member;
+import com.ll.util.Ut;
 import java.util.Map;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,11 +20,12 @@ public class AuthTokenService {
     String genAccessToken(Member member) {
         long id = member.getId();
         String username = member.getUsername();
+        String nickname = member.getNickname();
 
         return Ut.jwt.toString(
                 jwtSecretKey,
                 accessTokenExpirationSeconds,
-                Map.of("id", id, "username", username)
+                Map.of("id", id, "username", username, "nickname", nickname)
         );
     }
 
@@ -37,7 +38,8 @@ public class AuthTokenService {
 
         long id = (long) (Integer) parsedPayload.get("id");
         String username = (String) parsedPayload.get("username");
+        String nickname = (String) parsedPayload.get("nickname");
 
-        return Map.of("id", id, "username", username);
+        return Map.of("id", id, "username", username, "nickname", nickname);
     }
 }

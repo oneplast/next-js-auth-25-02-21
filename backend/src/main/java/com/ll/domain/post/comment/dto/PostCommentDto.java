@@ -1,6 +1,6 @@
-package com.ll.nextjs20250110.domain.post.comment.dto;
+package com.ll.domain.post.comment.dto;
 
-import com.ll.nextjs20250110.domain.post.comment.entity.PostComment;
+import com.ll.domain.post.comment.entity.PostComment;
 import java.time.LocalDateTime;
 import lombok.Getter;
 import org.springframework.lang.NonNull;

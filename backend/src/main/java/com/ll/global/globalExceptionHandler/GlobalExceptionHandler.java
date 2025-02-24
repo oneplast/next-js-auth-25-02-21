@@ -1,9 +1,9 @@
-package com.ll.nextjs20250110.global.globalExceptionHandler;
+package com.ll.global.globalExceptionHandler;
 
-import com.ll.nextjs20250110.global.app.AppConfig;
-import com.ll.nextjs20250110.global.dto.Empty;
-import com.ll.nextjs20250110.global.exceptions.ServiceException;
-import com.ll.nextjs20250110.global.rsData.RsData;
+import com.ll.global.app.AppConfig;
+import com.ll.global.dto.Empty;
+import com.ll.global.exceptions.ServiceException;
+import com.ll.global.rsData.RsData;
 import java.util.Comparator;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;

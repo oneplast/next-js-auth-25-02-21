@@ -1,4 +1,4 @@
-package com.ll.nextjs20250110.global.jpa.entity;
+package com.ll.global.jpa.entity;
 
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;

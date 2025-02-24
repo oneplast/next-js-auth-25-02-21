@@ -1,10 +1,10 @@
-package com.ll.nextjs20250110.domain.member.member.service;
+package com.ll.domain.member.member.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.ll.nextjs20250110.domain.member.member.entity.Member;
-import com.ll.nextjs20250110.util.Ut;
-import com.ll.nextjs20250110.util.Ut.jwt;
+import com.ll.domain.member.member.entity.Member;
+import com.ll.util.Ut;
+import com.ll.util.Ut.jwt;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import java.util.Date;

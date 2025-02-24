@@ -1,8 +1,8 @@
-package com.ll.nextjs20250110.global.security;
+package com.ll.global.security;
 
-import com.ll.nextjs20250110.domain.member.member.entity.Member;
-import com.ll.nextjs20250110.domain.member.member.service.MemberService;
-import com.ll.nextjs20250110.global.rq.Rq;
+import com.ll.domain.member.member.entity.Member;
+import com.ll.domain.member.member.service.MemberService;
+import com.ll.global.rq.Rq;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

@@ -1,9 +1,9 @@
-package com.ll.nextjs20250110.domain.post.comment.entity;
+package com.ll.domain.post.comment.entity;
 
-import com.ll.nextjs20250110.domain.member.member.entity.Member;
-import com.ll.nextjs20250110.domain.post.post.entity.Post;
-import com.ll.nextjs20250110.global.exceptions.ServiceException;
-import com.ll.nextjs20250110.global.jpa.entity.BaseTime;
+import com.ll.domain.member.member.entity.Member;
+import com.ll.domain.post.post.entity.Post;
+import com.ll.global.exceptions.ServiceException;
+import com.ll.global.jpa.entity.BaseTime;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;

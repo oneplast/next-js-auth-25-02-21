@@ -1,15 +1,15 @@
-package com.ll.nextjs20250110.domain.post.comment.controller;
+package com.ll.domain.post.comment.controller;
 
-import com.ll.nextjs20250110.domain.member.member.entity.Member;
-import com.ll.nextjs20250110.domain.post.comment.dto.PostCommentDto;
-import com.ll.nextjs20250110.domain.post.comment.entity.PostComment;
-import com.ll.nextjs20250110.domain.post.post.entity.Post;
-import com.ll.nextjs20250110.domain.post.post.repository.PostRepository;
-import com.ll.nextjs20250110.domain.post.post.service.PostService;
-import com.ll.nextjs20250110.global.dto.Empty;
-import com.ll.nextjs20250110.global.exceptions.ServiceException;
-import com.ll.nextjs20250110.global.rq.Rq;
-import com.ll.nextjs20250110.global.rsData.RsData;
+import com.ll.domain.member.member.entity.Member;
+import com.ll.domain.post.comment.dto.PostCommentDto;
+import com.ll.domain.post.comment.entity.PostComment;
+import com.ll.domain.post.post.entity.Post;
+import com.ll.domain.post.post.repository.PostRepository;
+import com.ll.domain.post.post.service.PostService;
+import com.ll.global.dto.Empty;
+import com.ll.global.exceptions.ServiceException;
+import com.ll.global.rq.Rq;
+import com.ll.global.rsData.RsData;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;

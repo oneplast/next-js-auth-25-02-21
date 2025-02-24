@@ -1,4 +1,4 @@
-package com.ll.nextjs20250110.global.dto;
+package com.ll.global.dto;
 
 import java.util.List;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package com.ll.nextjs20250110.global.springDoc;
+package com.ll.global.springDoc;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;

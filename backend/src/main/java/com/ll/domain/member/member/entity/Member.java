@@ -1,6 +1,6 @@
-package com.ll.nextjs20250110.domain.member.member.entity;
+package com.ll.domain.member.member.entity;
 
-import com.ll.nextjs20250110.global.jpa.entity.BaseTime;
+import com.ll.global.jpa.entity.BaseTime;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import java.util.ArrayList;
@@ -45,9 +45,10 @@ public class Member extends BaseTime {
         return this.password.equals(password);
     }
 
-    public Member(long id, String username) {
+    public Member(long id, String username, String nickname) {
         this.setId(id);
         this.username = username;
+        this.nickname = nickname;
     }
 
     public Collection<? extends GrantedAuthority> getAuthorities() {

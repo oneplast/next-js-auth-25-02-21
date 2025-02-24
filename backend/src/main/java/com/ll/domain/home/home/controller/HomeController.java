@@ -1,4 +1,4 @@
-package com.ll.nextjs20250110.domain.home.home.controller;
+package com.ll.domain.home.home.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

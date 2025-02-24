@@ -1,9 +1,9 @@
-package com.ll.nextjs20250110.global.rsData;
+package com.ll.global.rsData;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.ll.nextjs20250110.global.dto.Empty;
+import com.ll.global.dto.Empty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.lang.NonNull;

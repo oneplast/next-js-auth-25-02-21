@@ -1,4 +1,4 @@
-package com.ll.nextjs20250110.global.search;
+package com.ll.global.search;
 
 import lombok.AllArgsConstructor;
 

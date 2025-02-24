@@ -1,8 +1,8 @@
-package com.ll.nextjs20250110.global.rq;
+package com.ll.global.rq;
 
-import com.ll.nextjs20250110.domain.member.member.entity.Member;
-import com.ll.nextjs20250110.domain.member.member.service.MemberService;
-import com.ll.nextjs20250110.global.security.SecurityUser;
+import com.ll.domain.member.member.entity.Member;
+import com.ll.domain.member.member.service.MemberService;
+import com.ll.global.security.SecurityUser;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -27,17 +27,12 @@ public class Rq {
     private final HttpServletResponse resp;
     private final MemberService memberService;
 
-    public Member getActorByUsername(String username) {
-        return memberService.findByUsername(username).get();
-    }
-
-    // 스프링 시큐리티가 이해하는 방식으로 강제 로그인 처리
-    // 임시
     public void setLogin(Member member) {
         UserDetails user = new SecurityUser(
                 member.getId(),
                 member.getUsername(),
                 "",
+                member.getNickname(),
                 member.getAuthorities()
         );
 
@@ -57,7 +52,8 @@ public class Rq {
                 .map(Authentication::getPrincipal)
                 .filter(principal -> principal instanceof SecurityUser)
                 .map(principal -> (SecurityUser) principal)
-                .map(securityUser -> new Member(securityUser.getId(), securityUser.getUsername()))
+                .map(securityUser -> new Member(securityUser.getId(), securityUser.getUsername(),
+                        securityUser.getNickname()))
                 .orElse(null);
     }
 

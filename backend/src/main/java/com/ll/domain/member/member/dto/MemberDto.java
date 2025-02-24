@@ -1,6 +1,6 @@
-package com.ll.nextjs20250110.domain.member.member.dto;
+package com.ll.domain.member.member.dto;
 
-import com.ll.nextjs20250110.domain.member.member.entity.Member;
+import com.ll.domain.member.member.entity.Member;
 import java.time.LocalDateTime;
 import lombok.Getter;
 import org.springframework.lang.NonNull;

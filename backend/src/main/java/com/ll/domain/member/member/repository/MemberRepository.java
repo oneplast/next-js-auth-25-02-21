@@ -1,6 +1,6 @@
-package com.ll.nextjs20250110.domain.member.member.repository;
+package com.ll.domain.member.member.repository;
 
-import com.ll.nextjs20250110.domain.member.member.entity.Member;
+import com.ll.domain.member.member.entity.Member;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 

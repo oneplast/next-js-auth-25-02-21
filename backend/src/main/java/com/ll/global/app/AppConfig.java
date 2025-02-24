@@ -1,4 +1,4 @@
-package com.ll.nextjs20250110.global.app;
+package com.ll.global.app;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Getter;

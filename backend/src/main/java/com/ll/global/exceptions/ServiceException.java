@@ -1,7 +1,7 @@
-package com.ll.nextjs20250110.global.exceptions;
+package com.ll.global.exceptions;
 
-import com.ll.nextjs20250110.global.dto.Empty;
-import com.ll.nextjs20250110.global.rsData.RsData;
+import com.ll.global.dto.Empty;
+import com.ll.global.rsData.RsData;
 
 public class ServiceException extends RuntimeException {
     private final String resultCode;
