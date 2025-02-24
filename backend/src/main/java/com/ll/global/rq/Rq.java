@@ -57,16 +57,6 @@ public class Rq {
                 .orElse(null);
     }
 
-    public Optional<Member> findByActor() {
-        Member actor = getActor();
-
-        if (actor == null) {
-            return Optional.empty();
-        }
-
-        return memberService.findById(actor.getId());
-    }
-
     public void setCookie(String name, String value) {
         ResponseCookie cookie = ResponseCookie.from(name, value)
                 .path("/")

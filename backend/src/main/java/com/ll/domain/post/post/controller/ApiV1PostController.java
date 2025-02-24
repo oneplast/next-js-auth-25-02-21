@@ -136,7 +136,7 @@ public class ApiV1PostController {
     @Transactional
     @Operation(summary = "작성")
     public RsData<PostWithContentDto> write(@RequestBody @Valid PostWriteReqBody reqBody) {
-        Member actor = rq.findByActor().get();
+        Member actor = rq.getActor();
 
 //        if (user != null) {
 //            Authentication authentication = (Authentication) principal;
