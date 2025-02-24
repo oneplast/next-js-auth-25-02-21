@@ -7,12 +7,14 @@ import Link from "next/link";
 export default function ClientLayout({
   children,
   me,
+  isLogin,
+  isAdmin,
 }: Readonly<{
   children: React.ReactNode;
   me: components["schemas"]["MemberDto"];
+  isLogin: boolean;
+  isAdmin: boolean;
 }>) {
-  const isLogin = me.id !== 0;
-
   const logout = async () => {
     const response = await client.DELETE("/api/v1/members/logout");
 
@@ -35,7 +37,8 @@ export default function ClientLayout({
           {!isLogin && <Link href="/member/join">회원가입</Link>}
           {!isLogin && <Link href="/member/login">로그인</Link>}
           {isLogin && <button onClick={logout}>로그아웃</button>}
-          {isLogin && <Link href="/member/me">내 정보</Link>}
+          {isLogin && <Link href="/member/me">{me.nickname}님 정보</Link>}
+          {isAdmin && <Link href="/adm/member/list">관리자</Link>}
         </div>
       </header>
 

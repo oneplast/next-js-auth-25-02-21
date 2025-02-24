@@ -10,13 +10,17 @@ export async function middleware(req: NextRequest) {
 
   const accessToken = cookieStore.get("accessToken")?.value;
 
-  const { isLogin, isAccessTokenExpired, accessTokenPayload } =
+  const { isLogin, isAdmin, isAccessTokenExpired, accessTokenPayload } =
     parseAccessToken(accessToken);
 
   if (isLogin && isAccessTokenExpired) await refreshTokens(cookieStore);
 
-  if (isProtectedRoute(req.nextUrl.pathname) && !isLogin) {
-    return createUnauthorizedResponse();
+  if (requiresLogin(req.nextUrl.pathname) && !isLogin) {
+    return createUnauthorizedResponse("로그인 후 이용해주세요.");
+  }
+
+  if (requiresAdmin(req.nextUrl.pathname) && !isAdmin) {
+    return createForbiddenResponse("관리자로 로그인 후 다시 이용해주세요.");
   }
 
   return NextResponse.next({
@@ -76,7 +80,7 @@ function parseCookie(cookieStr: string) {
   return { name, value, options };
 }
 
-function isProtectedRoute(pathname: string): boolean {
+function requiresLogin(pathname: string): boolean {
   return (
     pathname.startsWith("/post/write") ||
     pathname.match(/^\/post\/\d+\/edit$/) !== null ||
@@ -84,9 +88,22 @@ function isProtectedRoute(pathname: string): boolean {
   );
 }
 
-function createUnauthorizedResponse(): NextResponse {
-  return new NextResponse("로그인이 필요합니다.", {
+function requiresAdmin(pathname: string): boolean {
+  return pathname.startsWith("/adm");
+}
+
+function createUnauthorizedResponse(msg: string): NextResponse {
+  return new NextResponse(msg, {
     status: 401,
+    headers: {
+      "Content-Type": "text/html; charset=utf-8",
+    },
+  });
+}
+
+function createForbiddenResponse(msg: string): NextResponse {
+  return new NextResponse(msg, {
+    status: 403,
     headers: {
       "Content-Type": "text/html; charset=utf-8",
     },

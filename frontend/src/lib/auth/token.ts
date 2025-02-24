@@ -20,6 +20,9 @@ export function parseAccessToken(accessToken: string | undefined) {
   const isLogin =
     typeof accessTokenPayload === "object" && accessTokenPayload !== null;
 
+  const isAdmin =
+    isLogin && accessTokenPayload.authorities.includes("ROLE_ADMIN");
+
   const me: components["schemas"]["MemberDto"] | null = isLogin
     ? {
         id: accessTokenPayload.id,
@@ -34,5 +37,5 @@ export function parseAccessToken(accessToken: string | undefined) {
         nickname: "",
       };
 
-  return { isLogin, isAccessTokenExpired, accessTokenPayload, me };
+  return { isLogin, isAdmin, isAccessTokenExpired, accessTokenPayload, me };
 }

@@ -29,14 +29,16 @@ export default async function RootLayout({
 
   const accessToken = cookieStore.get("accessToken")?.value;
 
-  const { me } = parseAccessToken(accessToken);
+  const { me, isLogin, isAdmin } = parseAccessToken(accessToken);
 
   return (
     <html lang="ko">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-[100dvh] border-[5px]`}
       >
-        <ClientLayout me={me}>{children}</ClientLayout>
+        <ClientLayout me={me} isLogin={isLogin} isAdmin={isAdmin}>
+          {children}
+        </ClientLayout>
       </body>
     </html>
   );
