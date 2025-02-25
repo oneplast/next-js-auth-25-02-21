@@ -33,7 +33,7 @@ export default async function Page({
     },
   });
 
-  const responseBody = response.data!!;
+  const itemPage = response.data!!;
 
   return (
     <>
@@ -42,7 +42,7 @@ export default async function Page({
         searchKeywordType={searchKeywordType}
         page={page}
         pageSize={pageSize}
-        responseBody={responseBody}
+        itemPage={itemPage}
       />
     </>
   );

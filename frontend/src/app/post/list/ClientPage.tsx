@@ -9,13 +9,13 @@ export default function ClientPage({
   searchKeywordType,
   page,
   pageSize,
-  responseBody,
+  itemPage,
 }: {
   searchKeyword: string;
   searchKeywordType: string;
   page: number;
   pageSize: number;
-  responseBody: components["schemas"]["PageDtoPostDto"];
+  itemPage: components["schemas"]["PageDtoPostDto"];
 }) {
   const router = useRouter();
 
@@ -58,21 +58,21 @@ export default function ClientPage({
       </form>
 
       <div>
-        <div>currentPageNumber: {responseBody.currentPageNumber}</div>
-        <div>pageSize: {responseBody.pageSize}</div>
-        <div>totalPages: {responseBody.totalPages}</div>
-        <div>totalItems: {responseBody.totalItems}</div>
+        <div>currentPageNumber: {itemPage.currentPageNumber}</div>
+        <div>pageSize: {itemPage.pageSize}</div>
+        <div>totalPages: {itemPage.totalPages}</div>
+        <div>totalItems: {itemPage.totalItems}</div>
       </div>
 
       <hr />
 
       <div className="flext my-2 gap-2">
-        {Array.from({ length: responseBody.totalPages }, (_, i) => i + 1).map(
+        {Array.from({ length: itemPage.totalPages }, (_, i) => i + 1).map(
           (pageNum) => (
             <Link
               key={pageNum}
               className={`px-2 py-1 border rounded ${
-                pageNum === responseBody.currentPageNumber ? "text-red-500" : ""
+                pageNum === itemPage.currentPageNumber ? "text-red-500" : ""
               }`}
               href={`?page=${pageNum}&pageSize=${pageSize}&searchKeywordType=${searchKeywordType}&searchKeyword=${searchKeyword}`}
             >
@@ -85,7 +85,7 @@ export default function ClientPage({
       <hr />
 
       <ul>
-        {responseBody.items.map((item) => (
+        {itemPage.items.map((item) => (
           <li key={item.id} className="border-[2px] border-[red] my-3">
             <Link className="block" href={`/post/${item.id}`}>
               <div>id : {item.id}</div>
@@ -104,12 +104,12 @@ export default function ClientPage({
       <hr />
 
       <div className="flex my-2 gap-2">
-        {Array.from({ length: responseBody.totalPages }, (_, i) => i + 1).map(
+        {Array.from({ length: itemPage.totalPages }, (_, i) => i + 1).map(
           (pageNum) => (
             <Link
               key={pageNum}
               className={`px-2 py-1 border rounded ${
-                pageNum === responseBody.currentPageNumber ? "text-red-500" : ""
+                pageNum === itemPage.currentPageNumber ? "text-red-500" : ""
               }`}
               href={`?page=${pageNum}&pageSize=${pageSize}&searchKeywordType=${searchKeywordType}&searchKeyword=${searchKeyword}`}
             >
