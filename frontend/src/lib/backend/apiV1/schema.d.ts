@@ -154,7 +154,24 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/v1/members": {
+    "/api/v1/members/me": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** 내 정보 */
+        get: operations["me"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/adm/members": {
         parameters: {
             query?: never;
             header?: never;
@@ -171,15 +188,15 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/v1/members/me": {
+    "/api/v1/adm/members/{id}": {
         parameters: {
             query?: never;
             header?: never;
             path?: never;
             cookie?: never;
         };
-        /** 내 정보 */
-        get: operations["me"];
+        /** 회원 단건 조회 */
+        get: operations["item_1"];
         put?: never;
         post?: never;
         delete?: never;
@@ -800,6 +817,35 @@ export interface operations {
             };
         };
     };
+    me: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json;charset=utf-8": components["schemas"]["MemberDto"];
+                };
+            };
+            /** @description Bad Request */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json;charset=utf-8": components["schemas"]["RsDataEmpty"];
+                };
+            };
+        };
+    };
     items_2: {
         parameters: {
             query?: {
@@ -834,11 +880,13 @@ export interface operations {
             };
         };
     };
-    me: {
+    item_1: {
         parameters: {
             query?: never;
             header?: never;
-            path?: never;
+            path: {
+                id: number;
+            };
             cookie?: never;
         };
         requestBody?: never;
@@ -849,7 +897,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json;charset=utf-8": components["schemas"]["MemberDto"];
+                    "application/json;charset=utf-8": components["schemas"]["MemberWithUsernameDto"];
                 };
             };
             /** @description Bad Request */
