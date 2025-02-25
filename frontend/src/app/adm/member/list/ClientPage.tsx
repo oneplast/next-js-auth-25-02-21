@@ -15,7 +15,7 @@ export default function ClientPage({
   searchKeywordType: string;
   page: number;
   pageSize: number;
-  itemPage: components["schemas"]["PageDtoMemberDto"];
+  itemPage: components["schemas"]["PageDtoMemberWithUsernameDto"];
 }) {
   const router = useRouter();
 
@@ -89,7 +89,8 @@ export default function ClientPage({
           <li key={item.id} className="border-[2px] border-[red] my-3">
             <Link className="block" href={`${item.id}`}>
               <div>id : {item.id}</div>
-              <div>createDtae : {item.createDate}</div>
+              <div>createDate : {item.createDate}</div>
+              <div>username : {item.username}</div>
               <div>nickname : {item.nickname}</div>
             </Link>
           </li>

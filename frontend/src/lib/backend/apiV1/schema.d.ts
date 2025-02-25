@@ -257,9 +257,9 @@ export interface components {
             authorId: number;
             authorName: string;
             title: string;
-            content: string;
             published: boolean;
             listed: boolean;
+            content: string;
             actorCanModify?: boolean;
             actorCanDelete?: boolean;
         };
@@ -343,7 +343,17 @@ export interface components {
             /** Format: int64 */
             totalListedPostCount: number;
         };
-        PageDtoMemberDto: {
+        MemberWithUsernameDto: {
+            /** Format: int64 */
+            id: number;
+            /** Format: date-time */
+            createDate: string;
+            /** Format: date-time */
+            modifyDate: string;
+            nickname: string;
+            username?: string;
+        };
+        PageDtoMemberWithUsernameDto: {
             /** Format: int32 */
             currentPageNumber: number;
             /** Format: int32 */
@@ -352,7 +362,7 @@ export interface components {
             totalPages: number;
             /** Format: int64 */
             totalItems: number;
-            items: components["schemas"]["MemberDto"][];
+            items: components["schemas"]["MemberWithUsernameDto"][];
         };
     };
     responses: never;
@@ -810,7 +820,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json;charset=utf-8": components["schemas"]["PageDtoMemberDto"];
+                    "application/json;charset=utf-8": components["schemas"]["PageDtoMemberWithUsernameDto"];
                 };
             };
             /** @description Bad Request */
