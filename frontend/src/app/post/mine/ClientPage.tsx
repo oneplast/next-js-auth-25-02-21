@@ -1,13 +1,12 @@
 "use client";
 
-import type { components } from "@/lib/backend/apiV1/schema";
+import { components } from "@/lib/backend/apiV1/schema";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export default function ClientPage({
   searchKeyword,
   searchKeywordType,
-  page,
   pageSize,
   itemPage,
 }: {
@@ -21,7 +20,8 @@ export default function ClientPage({
 
   return (
     <div>
-      <h1 className="text-2xl font-bold">공개글 목록</h1>
+      <h1 className="text-2xl font-bold">내글 목록</h1>
+
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -32,9 +32,9 @@ export default function ClientPage({
           const page = formData.get("page") as string;
           const pageSize = formData.get("pageSize") as string;
 
-          router.push(
-            `?page=${page}&pageSize=${pageSize}&searchKeywordTpye=${searchKeywordType}&searchKeyword=${searchKeyword}`
-          );
+          router.push(`
+            page=${page}&pageSize=${pageSize}&searchKeywordType=${searchKeywordType}&searchKeyword=${searchKeyword}
+            `);
         }}
       >
         <input type="hidden" name="page" value="1" />
@@ -67,7 +67,7 @@ export default function ClientPage({
 
       <hr />
 
-      <div className="flext my-2 gap-2">
+      <div className="flex my-2 gap-2">
         {Array.from({ length: itemPage.totalPages }, (_, i) => i + 1).map(
           (pageNum) => (
             <Link
