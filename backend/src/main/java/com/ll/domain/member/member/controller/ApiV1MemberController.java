@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -111,5 +112,28 @@ public class ApiV1MemberController {
         Member actor = rq.getActor();
 
         return new MemberDto(actor);
+    }
+
+    record MemberModifyMeReqBody(
+            @NotBlank
+            String nickname
+    ) {
+    }
+
+    @PutMapping("/me")
+    @Transactional
+    @Operation(summary = "내 정보 수정")
+    public RsData<MemberDto> modifyMe(
+            @RequestBody @Valid MemberModifyMeReqBody reqBody
+    ) {
+        Member actor = memberService.findByUsername(rq.getActor().getUsername()).get();
+
+        memberService.modify(actor, reqBody.nickname);
+
+        return new RsData<>(
+                "200-1",
+                "회원정보가 수정되었습니다.",
+                new MemberDto(actor)
+        );
     }
 }

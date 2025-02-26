@@ -5,6 +5,7 @@ import com.ll.domain.member.member.repository.MemberRepository;
 import com.ll.global.exceptions.ServiceException;
 import com.ll.global.search.MemberSearchKeywordTypeV1;
 import com.ll.util.Ut;
+import jakarta.validation.constraints.NotBlank;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
@@ -95,5 +96,9 @@ public class MemberService {
         PageRequest pageRequest = PageRequest.of(page - 1, pageSize, Sort.by(Sort.Order.desc("id")));
 
         return memberRepository.findAll(pageRequest);
+    }
+
+    public void modify(Member member, @NotBlank String nickname) {
+        member.setNickname(nickname);
     }
 }
