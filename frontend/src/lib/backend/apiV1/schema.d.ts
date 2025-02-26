@@ -47,6 +47,24 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/members/me": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** 내 정보 */
+        get: operations["me"];
+        /** 내 정보 수정 */
+        put: operations["modifyMe"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/posts": {
         parameters: {
             query?: never;
@@ -146,23 +164,6 @@ export interface paths {
         };
         /** 내 글 다건 조회 */
         get: operations["mine"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/v1/members/me": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** 내 정보 */
-        get: operations["me"];
         put?: never;
         post?: never;
         delete?: never;
@@ -285,6 +286,23 @@ export interface components {
             msg: string;
             data: components["schemas"]["PostWithContentDto"];
         };
+        MemberModifyMeReqBody: {
+            nickname: string;
+        };
+        MemberDto: {
+            /** Format: int64 */
+            id: number;
+            /** Format: date-time */
+            createDate: string;
+            /** Format: date-time */
+            modifyDate: string;
+            nickname: string;
+        };
+        RsDataMemberDto: {
+            resultCode: string;
+            msg: string;
+            data: components["schemas"]["MemberDto"];
+        };
         PostWriteReqBody: {
             title: string;
             content: string;
@@ -297,15 +315,6 @@ export interface components {
         MemberLoginReqBody: {
             username: string;
             password: string;
-        };
-        MemberDto: {
-            /** Format: int64 */
-            id: number;
-            /** Format: date-time */
-            createDate: string;
-            /** Format: date-time */
-            modifyDate: string;
-            nickname: string;
         };
         MemberLoginResBody: {
             item: components["schemas"]["MemberDto"];
@@ -321,11 +330,6 @@ export interface components {
             username: string;
             password: string;
             nickname: string;
-        };
-        RsDataMemberDto: {
-            resultCode: string;
-            msg: string;
-            data: components["schemas"]["MemberDto"];
         };
         PageDtoPostDto: {
             /** Format: int32 */
@@ -542,6 +546,68 @@ export interface operations {
                 };
                 content: {
                     "application/json;charset=utf-8": components["schemas"]["RsDataEmpty"];
+                };
+            };
+            /** @description Bad Request */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json;charset=utf-8": components["schemas"]["RsDataEmpty"];
+                };
+            };
+        };
+    };
+    me: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json;charset=utf-8": components["schemas"]["MemberDto"];
+                };
+            };
+            /** @description Bad Request */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json;charset=utf-8": components["schemas"]["RsDataEmpty"];
+                };
+            };
+        };
+    };
+    modifyMe: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["MemberModifyMeReqBody"];
+            };
+        };
+        responses: {
+            /** @description OK */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json;charset=utf-8": components["schemas"]["RsDataMemberDto"];
                 };
             };
             /** @description Bad Request */
@@ -804,35 +870,6 @@ export interface operations {
                 };
                 content: {
                     "application/json;charset=utf-8": components["schemas"]["PageDtoPostDto"];
-                };
-            };
-            /** @description Bad Request */
-            400: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json;charset=utf-8": components["schemas"]["RsDataEmpty"];
-                };
-            };
-        };
-    };
-    me: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description OK */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json;charset=utf-8": components["schemas"]["MemberDto"];
                 };
             };
             /** @description Bad Request */
