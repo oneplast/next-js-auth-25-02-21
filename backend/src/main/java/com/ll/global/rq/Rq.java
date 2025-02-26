@@ -99,4 +99,11 @@ public class Rq {
     public void setHeader(String name, String value) {
         resp.setHeader(name, value);
     }
+
+    public void refreshAccessToken(Member member) {
+        String newAccessToken = memberService.genAccessToken(member);
+
+        setHeader("Authorization", "Bearer " + member.getApiKey() + " " + newAccessToken);
+        setCookie("accessToken", newAccessToken);
+    }
 }
